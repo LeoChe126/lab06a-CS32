@@ -55,7 +55,9 @@ int WordCount::incrWordCount(std::string word) {
 	}
 	size_t idx = hash(word);
 	for(auto& pair : table[idx]){
-		return ++pair.second;
+		if(pair.first == word){
+			return ++pair.second;
+		}
 	}
 	table[idx].emplace_back(word, 1);
 	return 1;
